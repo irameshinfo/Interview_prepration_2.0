@@ -1,0 +1,5 @@
+git init
+git add .
+git commit -m "test"
+git remote add origin https://github.com/irameshinfo/Interview_prepration_2.0.git 
+git  git push --set-upstream origin master
