@@ -1,0 +1,7 @@
+python dataflow.py \
+  --runner=DataflowRunner \
+  --project=ranjanrishi-project \
+  --region=us-central1 \
+  --temp_location=gs://dataflowtempbucket7 \
+  --staging_location=gs://dataflowstaging7 \
+  --streaming
