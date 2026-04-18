@@ -1,0 +1,61 @@
+1. command to create topic
+
+gcloud pubsub topics create emp-trans-stream-topic
+
+2. create dataset in BQ
+
+bq mk --dataset --location=us-central1 emp_trans_dataset
+
+3. create table 
+
+bq mk --table emp_dataset.emp_stream_table \
+emp_id:INT64,name:STRING,dept:STRING,sal:INT64
+
+4. create temp bucket
+
+gsutil mb -l us-central1 gs://dataflowtempbucket7
+
+5. Crate dataflow staging bucket
+
+gsutil mb -l us-central1 gs://dataflowstaging7
+
+
+7. open the cloud shell -click ... (three dots on top right) upload dataflow.py file
+
+7. script to run dataflow job
+
+python dataflow_trans.py \
+  --runner=DataflowRunner \
+  --project=ranjanrishi-project \
+  --region=us-central1 \
+  --temp_location=gs://dataflowtempbucket7 \
+  --staging_location=gs://dataflowstaging7 \
+  --streaming
+  
+8. execute the data_gen_script.py to generate the streaming data and publish it to topic  
+
+8. post run execute the below query to verify the dataflow
+
+select * from emp_dataset.emp_stream_table where 1=1;
+
+9. check the streaming job is running status
+
+gcloud dataflow jobs list --region=us-central1
+
+10. command used to stop the streaming job (#get the job id from above command) 
+
+gcloud dataflow jobs cancel <JOB_ID> --region=us-central1 
+
+gcloud dataflow jobs drain <JOB_ID> --region=us-central1 (recomended stop once all published messages are loaded)
+
+11. while running dataflow background compute engine is created to run the job
+
+================================================
+Steps to call the same from dataflow code from airflow
+=================================================
+
+12.run the below command in console CLI 
+
+gsutil cp dataflow_trans.py gs://dataflowtempbucket7/
+
+13. place the dataflow_day.py file under the dag script folder and composer
