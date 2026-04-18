@@ -1,0 +1,34 @@
+I’ll assume your file is emp.csv with schema:
+
+emp_id INT64
+name STRING
+dept STRING
+sal INT64
+
+1. Authenticate gcloud CLI
+
+gcloud auth login 
+
+
+2. Dataset needs to created in bq
+
+    bq mk --location=[LOCATION] --dataset [PROJECT_ID]:[DATASET_NAME] 
+
+    bq mk --location=us-central1 --dataset ranjanrishi-project:python_script_load
+
+3. Upload file GCS
+    
+    gsutil mb -l[location] [bucket_name]
+    
+    gsutil mb -l us-central1 gs://pythonscriptload
+
+    gsutil cp [local directory] [gcs bucket loation]
+    
+    gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\Load_data_using_python_script\input_file\emp.csv gs://pythonscriptload
+
+ 4. Install bigquery library in vscode command prompt
+
+    pip install google-cloud-bigquery   
+
+
+
