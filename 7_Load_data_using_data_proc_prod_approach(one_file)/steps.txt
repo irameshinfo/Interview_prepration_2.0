@@ -39,7 +39,17 @@ gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\7_Load_data_using_data_pr
 
 9. run the spark submit command
 
+config_path_hard_coded in script
+=================================
 gcloud dataproc jobs submit pyspark gs://dataproc_case/data_load_script.py \
   --cluster=my-cluster \
   --region=us-central1
+
+passing config path as argument
+=================================
+gcloud dataproc jobs submit pyspark gs://dataproc_case/data_load_script.py \
+  --cluster=my-cluster \
+  --region=us-central1 \
+  -- gs://dataproc_case/config/config.json
+
   

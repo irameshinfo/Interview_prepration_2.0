@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, current_timestamp
 import json
 from google.cloud import storage
+import sys
 
 spark = SparkSession.builder \
     .appName("GCS to BQ with Config") \
@@ -10,7 +11,8 @@ spark = SparkSession.builder \
 # =========================
 # READ CONFIG FROM GCS
 # =========================
-config_path = "gs://dataproc_case/config/config.json"
+#config_path = "gs://dataproc_case/config/config.json"
+config_path = sys.argv[1]
 
 storage_client = storage.Client()
 
@@ -107,4 +109,4 @@ destination_blob = bucket.blob(archive_path)
 bucket.copy_blob(source_blob, bucket, destination_blob.name)
 source_blob.delete()
 
-print("Job completed successfully")
+print("Job completed successfully") 
