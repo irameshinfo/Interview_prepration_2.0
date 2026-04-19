@@ -1,0 +1,9 @@
+id,name,age,phone,email
+1,Ramesh,28,+917506802299,ramesh@gmail.com
+2,Sita,25,+919876543210,sita123@yahoo.com
+3,Arjun,32,9876543210,arjun@company.com
+4,Meena,29,+911234567890,meena@domain.in
+5,John,35,+14155552671,john.doe@abc.org
+6,InvalidUser1,22,12345,invalidemail
+7,InvalidUser2,30,+910000000000,wrong@.com
+8,TestUser,27,+919999888777,test.user@mail.co.in

@@ -1,0 +1,45 @@
+1. create bucket to place the config file
+
+gsutil mb -l us-central1 gs://dataproc_case
+
+2. crate archive_bucket
+
+gsutil mb -l us-central1 gs://dataproc_archive_bucket
+
+3. create temp bucket
+
+gsutil mb -l us-central1 gs://dataproc_temp_buk
+
+4. Create required datasets
+
+bq mk --dataset --location=us-central1 ranjanrishi-project:dataproc_valid_entry
+
+bq mk --dataset --location=us-central1 ranjanrishi-project:dataproc_invalid_entry
+
+bq mk --dataset --location=us-central1 ranjanrishi-project:dataproc_audit
+
+5.move the config file from local directiory to GCS folder
+
+gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\7_Load_data_using_data_proc_prod_approach(one_file)\config\config.json gs://dataproc_case/config/
+
+6.move the input file from local to gcs folder
+
+gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\7_Load_data_using_data_proc_prod_approach(one_file)\input_file\emp.csv gs://dataproc_case/emp_data/
+
+7. create single node cluster
+
+gcloud dataproc clusters create my-cluster \
+  --region=us-central1 \
+  --single-node \
+  --master-machine-type=e2-standard-2
+
+8. move the spark script to gcs directory
+
+gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\7_Load_data_using_data_proc_prod_approach(one_file)\data_proc\data_load_script.py gs://dataproc_case
+
+9. run the spark submit command
+
+gcloud dataproc jobs submit pyspark gs://dataproc_case/data_load_script.py \
+  --cluster=my-cluster \
+  --region=us-central1
+  
