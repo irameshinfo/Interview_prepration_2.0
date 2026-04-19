@@ -73,13 +73,13 @@ invalid_df = invalid_df.withColumn("load_time", current_timestamp())
 valid_df.write.format("bigquery") \
     .option("table", valid_table) \
     .option("temporaryGcsBucket", "dataproc_temp_buk") \
-    .mode("append") \
+    .mode("overwrite") \
     .save()
 
 invalid_df.write.format("bigquery") \
     .option("table", invalid_table) \
     .option("temporaryGcsBucket", "dataproc_temp_buk") \
-    .mode("append") \
+    .mode("overwrite") \
     .save()
 
 # =========================
