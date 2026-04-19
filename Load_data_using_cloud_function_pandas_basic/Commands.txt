@@ -1,0 +1,45 @@
+I’ll assume your file is emp.csv with schema:
+
+emp_id INT64
+name STRING
+dept STRING
+sal INT64
+
+1. Authenticate gcloud CLI
+
+gcloud auth login 
+
+
+2. Dataset needs to created in bq
+
+    bq mk --location=[LOCATION] --dataset [PROJECT_ID]:[DATASET_NAME] 
+
+    bq mk --location=us-central1 --dataset ranjanrishi-project:cloud_function_load
+
+3. Upload file GCS
+    
+    gsutil mb -l[location] [bucket_name]
+    
+    gsutil mb -l us-central1 gs://cloud_function_load
+
+    gsutil cp [local directory] [gcs bucket loation]
+    
+    gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\Load_data_using_python_script\input_file\emp.csv gs://cloud_function_load
+
+ 4. Install bigquery library in vscode command prompt
+
+    pip install google-cloud-bigquery
+
+5. open cloud shell env. click ... on top right corner and upload main.py, requirement.txt
+
+6. run the below command on cloud shell to deploy the cloud function
+
+gcloud functions deploy load_with_pandas \
+  --runtime python311 \
+  --trigger-resource cloud_function_load \
+  --trigger-event google.storage.object.finalize \
+  --entry-point load_with_pandas \
+  --region us-central1	
+
+
+
