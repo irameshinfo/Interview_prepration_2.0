@@ -11,10 +11,10 @@ job_config = bigquery.LoadJobConfig(
 )
 
 # GCS file path
-uri = "gs://pythonscriptload/emp.csv"
+uri = "gs://gcplearning/emp.csv"
 
 # Target table
-table_id = "ranjanrishi-project.python_script_load.emp"
+table_id = "rameshgcplearning.gcpworkouts.emp"
 
 # Load data
 job = client.load_table_from_uri(

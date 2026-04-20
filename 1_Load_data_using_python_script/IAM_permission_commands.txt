@@ -1,0 +1,19 @@
+gcloud config set project rameshgcplearning
+
+gcloud auth application-default revoke
+
+gcloud auth application-default login
+
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="user:rameshgcpexpert@gmail.com" \
+--role="roles/bigquery.jobUser"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="user:rameshgcpexpert@gmail.com" \
+--role="roles/storage.objectViewer"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="user:rameshgcpexpert@gmail.com" \
+--role="roles/bigquery.dataEditor"
+
