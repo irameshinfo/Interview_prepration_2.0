@@ -13,7 +13,7 @@ def load_csv_to_bq(event, context):
 
     uri = f"gs://{bucket_name}/{file_name}"
 
-    table_id = "ranjanrishi-project.cloud_function_load.emp"
+    table_id = "rameshgcplearning.gcpworkouts.emp_cloud_fn"
 
     job_config = bigquery.LoadJobConfig(
         source_format=bigquery.SourceFormat.CSV,

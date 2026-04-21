@@ -7,5 +7,7 @@ roles/dataproc.editor
 roles/storage.objectAdmin
 roles/bigquery.jobUser
 roles/bigquery.dataEditor
-roles/composer.worker
-roles/secretmanager.secretAccessor
+roles/composer.worker --composer
+roles/secretmanager.secretAccessor --secrete manager
+roles/eventarc.eventReceiver  --cloud function (compute developer service account)
+roles/pubsub.publisher --cloud function (compute developer service account)

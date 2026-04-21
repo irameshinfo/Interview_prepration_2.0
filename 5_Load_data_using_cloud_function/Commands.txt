@@ -36,7 +36,7 @@ gcloud auth login
 
 gcloud functions deploy load_csv_to_bq \
   --runtime python311 \
-  --trigger-resource cloud_function_load \
+  --trigger-resource gcplearning \
   --trigger-event google.storage.object.finalize \
   --entry-point load_csv_to_bq \
   --region us-central1	
