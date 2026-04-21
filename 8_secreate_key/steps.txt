@@ -1,0 +1,12 @@
+1. Provide IAM access for principles
+
+   -Secret Manager Admin
+   -Secret Manager Secret Accessor
+
+2. Go to Secret Manager service 
+
+3. click secrete key 
+
+4. provide secrete key name and value and create key
+
+5. we can access this key using the python code

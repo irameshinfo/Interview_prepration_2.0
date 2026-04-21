@@ -12,9 +12,9 @@ with DAG(
 
     load_csv_to_bq = GCSToBigQueryOperator(
         task_id="load_emp_csv",
-        bucket="pythonscriptload",
+        bucket="gcplearning",
         source_objects=["emp.csv"],
-        destination_project_dataset_table="ranjanrishi-project.python_script_load.emp_air_flow",
+        destination_project_dataset_table="rameshgcplearning.gcpworkouts.emp_air_flow",
         source_format="CSV",
         skip_leading_rows=1,
         autodetect=True,
