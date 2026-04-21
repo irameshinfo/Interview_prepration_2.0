@@ -1,0 +1,11 @@
+For a pipeline like:
+GCS → Dataproc → BigQuery → Airflow
+
+👉 Service Account should have:
+
+roles/dataproc.editor
+roles/storage.objectAdmin
+roles/bigquery.jobUser
+roles/bigquery.dataEditor
+roles/composer.worker
+roles/secretmanager.secretAccessor
