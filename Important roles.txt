@@ -11,3 +11,18 @@ roles/composer.worker --composer
 roles/secretmanager.secretAccessor --secrete manager
 roles/eventarc.eventReceiver  --cloud function (compute developer service account)
 roles/pubsub.publisher --cloud function (compute developer service account)
+roles/run.invoker (cloud run)
+roles/bigquery.jobs.create
+
+faced authentication for cloud run (ran the below command to resolve the issue)
+===========================================================================
+gcloud run services add-iam-policy-binding load-csv-to-bq \
+    --region=us-central1 \
+    --member="allUsers" \
+    --role="roles/run.invoker"
+
+load-csv-to-bq ==>cloud function name
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/bigquery.jobUser"

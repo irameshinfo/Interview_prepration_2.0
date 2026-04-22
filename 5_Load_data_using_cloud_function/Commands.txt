@@ -39,7 +39,10 @@ gcloud functions deploy load_csv_to_bq \
   --trigger-resource gcplearning \
   --trigger-event google.storage.object.finalize \
   --entry-point load_csv_to_bq \
-  --region us-central1	
+  --region us-central1
+  
+
+
 
 
 
