@@ -1,0 +1,25 @@
+1. create dataset dataproc_valid_entry
+
+2.create bucket
+
+gs://dataproc_case_ram/
+
+3. move input file to below path
+
+gs://dataproc_case_ram/emp_data/emp.csv
+
+4. create temp bucket
+
+5.create archive bucket
+
+gs://archiveram/
+
+6. move config.json in side 
+
+gs://dataproc_case_ram/config/
+
+7. move the dataproc script inside 
+
+gs://dataproc_case_ram/scripts/
+
+8. move the dag script inside dag folder 

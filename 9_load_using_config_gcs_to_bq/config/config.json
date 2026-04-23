@@ -1,0 +1,9 @@
+{
+  "project_id": "rameshgcplearning",
+  "dataset": "dataproc_valid_entry",
+  "valid_table": "employee_valid",
+  "invalid_table": "employee_invalid",
+  "input_path": "gs://dataproc_case_ram/emp_data/emp.csv",
+  "archive_path": "gs://archiveram/emp.csv/",
+  "temp_bucket": "dataproc_temp_buk"
+}
