@@ -13,6 +13,8 @@ roles/eventarc.eventReceiver  --cloud function (compute developer service accoun
 roles/pubsub.publisher --cloud function (compute developer service account)
 roles/run.invoker (cloud run)
 roles/bigquery.jobs.create
+roles/dataproc.editor
+roles/dataproc.worker
 
 faced authentication for cloud run (ran the below command to resolve the issue)
 ===========================================================================
@@ -26,3 +28,27 @@ load-csv-to-bq ==>cloud function name
 gcloud projects add-iam-policy-binding rameshgcplearning \
   --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
   --role="roles/bigquery.jobUser"
+  
+dataproc
+=========
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:<YOUR-SERVICE-ACCOUNT>" \
+  --role="roles/dataproc.editor"
+
+service account=<project-id>@cloudcomposer.gserviceaccount.com  
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/dataproc.editor"
+  
+  gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/compute.instanceAdmin.v1"
+  
+  gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
+  
+  gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/dataproc.worker"

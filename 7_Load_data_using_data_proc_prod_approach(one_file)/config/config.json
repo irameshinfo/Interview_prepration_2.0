@@ -1,13 +1,13 @@
 {
-  "input_path": "gs://dataproc_case/emp_data/emp.csv",
+  "input_path": "gs://dataproc_case_ram/emp_data/emp.csv",
   "archive_bucket": "dataproc_archive_bucket",
-  "archive_path": "archive/emp.csv",
+  "archive_path": "archiveram/emp.csv",
   "temp_bucket": "dataproc_temp_buk",
 
   "bq": {
-    "valid_table": "ranjanrishi-project.dataproc_valid_entry.employee",
-    "invalid_table": "ranjanrishi-project.dataproc_invalid_entry.employee",
-    "audit_table": "ranjanrishi-project.dataproc_audit.audit_table"
+    "valid_table": "rameshgcplearning.dataproc_valid_entry.employee",
+    "invalid_table": "rameshgcplearning.dataproc_invalid_entry.employee",
+    "audit_table": "rameshgcplearning.dataproc_audit.audit_table"
   },
 
   "validation": {
