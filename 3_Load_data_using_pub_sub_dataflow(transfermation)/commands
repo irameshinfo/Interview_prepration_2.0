@@ -8,7 +8,7 @@ bq mk --dataset --location=us-central1 emp_trans_dataset
 
 3. create table 
 
-bq mk --table emp_dataset.emp_stream_table \
+bq mk --table emp_trans_dataset.emp_stream_table \
 emp_id:INT64,name:STRING,dept:STRING,sal:INT64
 
 4. create temp bucket

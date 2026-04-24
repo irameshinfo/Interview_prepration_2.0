@@ -15,6 +15,7 @@ roles/run.invoker (cloud run)
 roles/bigquery.jobs.create
 roles/dataproc.editor
 roles/dataproc.worker
+roles/dataflow.jobs.create
 
 faced authentication for cloud run (ran the below command to resolve the issue)
 ===========================================================================
@@ -52,3 +53,25 @@ gcloud projects add-iam-policy-binding rameshgcplearning \
   gcloud projects add-iam-policy-binding rameshgcplearning \
   --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
   --role="roles/dataproc.worker"
+
+=================
+enable dataflow API
+==============
+gcloud services enable dataflow.googleapis.com --project=rameshgcplearning
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/dataflow.admin"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/dataflow.worker"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/storage.admin"
+
+gcloud iam service-accounts add-iam-policy-binding \
+  rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com \
+  --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"

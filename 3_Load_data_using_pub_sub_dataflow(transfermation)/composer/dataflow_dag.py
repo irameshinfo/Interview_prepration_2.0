@@ -1,16 +1,15 @@
 from airflow import DAG
-#from airflow.utils.dates import days_ago (not supported in new version of airflow)
-from datetime import datetime, timedelta
+from datetime import datetime
 from airflow.providers.apache.beam.operators.beam import BeamRunPythonPipelineOperator
 
-PROJECT_ID = "ranjanrishi-project"
+PROJECT_ID = "rameshgcplearning"
 REGION = "us-central1"
+SERVICE_ACCOUNT = "rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com"
 
 with DAG(
     dag_id="dataflow_streaming_job",
-    #start_date=days_ago(1), (not supported in new version of airflow)
-    start_date=datetime.now() - timedelta(days=1),
-    schedule='@daily',   # ✅ updated
+    start_date=datetime(2024, 1, 1),
+    schedule=None,
     catchup=False,
 ) as dag:
 
@@ -21,10 +20,13 @@ with DAG(
         pipeline_options={
             "project": PROJECT_ID,
             "region": REGION,
-            "temp_location": "gs://dataflowtempbucket7",
-            "staging_location": "gs://dataflowstaging7",
+            "job_name": "streaming-job-{{ ts_nodash }}",
+            "runner": "DataflowRunner",
+            "temp_location": "gs://dataflowtempbucket7/temp",
+            "staging_location": "gs://dataflowstaging7/staging",
             "streaming": True,
+
+            # ✅ ONLY THIS
+            "service_account_email": SERVICE_ACCOUNT,
         },
     )
-
-    run_dataflow
