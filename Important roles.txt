@@ -75,3 +75,15 @@ gcloud iam service-accounts add-iam-policy-binding \
   rameshgcplearning@rameshgcplearning.iam.gserviceaccount.com \
   --member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:dataflow-sa@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/dataflow.admin"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:dataflow-sa@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/pubsub.subscriber"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="serviceAccount:dataflow-sa@rameshgcplearning.iam.gserviceaccount.com" \
+  --role="roles/storage.admin"

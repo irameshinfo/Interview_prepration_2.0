@@ -1,6 +1,8 @@
-1. command to create topic
+1. command to create topic and subscription
 
 gcloud pubsub topics create emp-stream-topic
+gcloud pubsub subscriptions create emp-stream-sub \
+  --topic=emp-stream-topic
 
 2. create dataset in BQ
 
