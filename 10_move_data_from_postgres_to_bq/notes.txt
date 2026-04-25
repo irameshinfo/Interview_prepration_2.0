@@ -1,0 +1,13 @@
+Postgres DB details
+===================
+host:34.10.152.190 	
+post:5432
+Database : postgres
+user: postgres
+password: Oracle@123
+
+gsutil mb gs://dataproc_temp_buk_ramesh
+
+gsutil mb -l us-central1 gs://postgres_to_bq
+
+gsutil cp C:\Bigdata_practice\Interview_prepration_2.0\10_move_data_from_postgres_to_bq\dataproc\load_postgres_to_bq.py gs://postgres_to_bq
