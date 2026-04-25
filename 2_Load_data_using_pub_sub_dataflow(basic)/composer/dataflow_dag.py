@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.providers.apache.beam.operators.beam import BeamRunPythonPipelineOperator
 
-PROJECT_ID = "ranjanrishi-project"
+PROJECT_ID = "rameshgcplearning"
 REGION = "us-central1"
 
 with DAG(
