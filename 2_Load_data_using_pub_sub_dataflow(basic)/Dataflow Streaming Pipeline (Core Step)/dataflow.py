@@ -9,7 +9,7 @@ class ParseJSON(beam.DoFn):
 
 options = PipelineOptions(
     streaming=True,
-    project='ranjanrishi-project',
+    project='rameshgcplearning',
     region='us-central1',
     temp_location='gs://dataflowtempbucket7'
 )
@@ -18,11 +18,11 @@ with beam.Pipeline(options=options) as p:
     (
         p
         | "Read from PubSub" >> beam.io.ReadFromPubSub(
-            topic="projects/ranjanrishi-project/topics/emp-stream-topic"
+            subscription="projects/rameshgcplearning/subscriptions/emp-stream-sub"
         )
         | "Parse JSON" >> beam.ParDo(ParseJSON())
         | "Write to BigQuery" >> beam.io.WriteToBigQuery(
-            "ranjanrishi-project:emp_dataset.emp_stream_table",
+            "rameshgcplearning:emp_dataset.emp_stream_table",
             schema="emp_id:INTEGER,name:STRING,dept:STRING,sal:INTEGER",
             write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
         )

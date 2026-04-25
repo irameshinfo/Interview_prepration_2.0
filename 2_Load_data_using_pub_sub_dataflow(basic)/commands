@@ -22,11 +22,13 @@ gsutil mb -l us-central1 gs://dataflowstaging7
 
 7. open the cloud shell -click ... (three dots on top right) upload dataflow.py file
 
+pip install apache-beam[gcp]
+
 7. script to run dataflow job
 
 python dataflow.py \
   --runner=DataflowRunner \
-  --project=ranjanrishi-project \
+  --project=rameshgcplearning \
   --region=us-central1 \
   --temp_location=gs://dataflowtempbucket7 \
   --staging_location=gs://dataflowstaging7 \

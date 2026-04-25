@@ -3,7 +3,7 @@ import time
 import json
 import random
 
-project_id = "ranjanrishi-project"
+project_id = "rameshgcplearning"
 topic_id = "emp-stream-topic"
 
 publisher = pubsub_v1.PublisherClient()
