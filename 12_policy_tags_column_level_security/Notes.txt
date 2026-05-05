@@ -1,0 +1,8 @@
+1. Enable data catalog API
+2. click create taxonomy
+3. Create policy 
+4. Click on Manage data policy -->add masking rules
+5. go to table schema -->edit schema -->add policy tag
+
+bigquerydatapolicy.maskedReader  (only masked data available)
+roles/bigquery.fineGrainedReader (user can see the actual data)
