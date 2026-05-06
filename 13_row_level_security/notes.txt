@@ -1,0 +1,12 @@
+1.create row access policy loc_pol on masking.emptest GRANT TO("user:rameshilangogcp@gmail.com") filter using (location='UK');
+
+2.provide "BigQuery Data Viewer"  permission for "rameshilangogcp@gmail.com" 
+   gcloud projects add-iam-policy-binding rameshgcplearning \
+  --member="user:rameshilangogcp@gmail.com" \
+  --role="roles/bigquery.dataViewer"
+
+3.execute below query
+   ====================
+	select * from rameshgcplearning.masking.emptest
+
+	only UK location data visible to rameshilangogcp@gmail.com

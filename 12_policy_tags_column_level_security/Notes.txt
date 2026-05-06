@@ -6,3 +6,44 @@
 
 bigquerydatapolicy.maskedReader  (only masked data available)
 roles/bigquery.fineGrainedReader (user can see the actual data)
+
+Create taxonomy
+===============
+gcloud dataplex taxonomies maskdata \
+  --location=us-central1 \
+  --display-name="PII Taxonomy"
+ 
+Create policy tag 
+================== 
+  gcloud data-catalog policy-tags create sensitive_tag \
+  --taxonomy=maskdata \
+  --location=us-central1 \
+  --display-name="Sensitive Data"
+
+Attach Policy Tag to BigQuery Column  
+=====================================
+CREATE TABLE `masking.emptest` (
+  id INT64,
+  name STRING,
+  location STRING
+    OPTIONS (
+      policy_tags = ['projects/rameshgcplearning/locations/us-central1/taxonomies/maskdata/policyTags/sensitive_tag']
+    )
+);
+
+Alter existing column
+========================
+
+ALTER TABLE `masking.emptest`
+ALTER COLUMN location
+SET OPTIONS (
+  policy_tags = ['projects/rameshgcplearning/locations/us-central1/taxonomies/maskdata/policyTags/sensitive_tag']
+);
+
+Grant access to policy tag
+==========================
+
+gcloud data-catalog policy-tags add-iam-policy-binding sensitive_tag \
+  --location=us-central1 \
+  --member="user:rameshilangogcp@gmail.com" \
+  --role="roles/datacatalog.categorymaskedReader"
