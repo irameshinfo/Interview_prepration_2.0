@@ -1,0 +1,41 @@
+
+
+gcloud pubsub topics create employee-topic
+
+gcloud pubsub subscriptions create employee-sub \
+--topic=employee-topic
+
+gcloud pubsub topics create employee-dlq-topic
+
+gcloud pubsub subscriptions create employee-dlq-sub \
+--topic=employee-dlq-topic
+
+CREATE TABLE emp_dataset.employee_stream (
+    emp_id INT64,
+    emp_name STRING,
+    salary INT64
+);
+
+pip install apache-beam[gcp]
+
+gsutil mb gs://ramesh-dataflow-bucket
+
+python pubsub_dlq.py \
+--runner=DataflowRunner \
+--project=rameshgcplearning \
+--region=us-central1 \
+--worker_region=us-central1 \
+--machine_type=e2-standard-2 \
+--num_workers=1 \
+--max_num_workers=2 \
+--temp_location=gs://ramesh-dataflow-bucket/temp \
+--staging_location=gs://ramesh-dataflow-bucket/staging
+
+valid message
+=============
+gcloud pubsub topics publish employee-topic --message='{"emp_id":101,"emp_name":"Ramesh","salary":50000}'
+
+
+in valid message
+===================
+gcloud pubsub topics publish employee-topic --message='{"emp_id":102,"salary":60000}'
