@@ -1,0 +1,34 @@
+Specify table structure
+======================
+CREATE OR REPLACE EXTERNAL TABLE `emp_dataset.external_emp`
+(
+  emp_id INT64,
+  emp_name STRING,
+  dept string,
+  salary FLOAT64
+)
+OPTIONS (
+  format = 'CSV',
+  uris = ['gs://gcplearning/emp.csv'],
+  skip_leading_rows = 1
+);
+
+using Auto detect
+==================
+CREATE OR REPLACE EXTERNAL TABLE `emp_dataset.external_emp1`
+OPTIONS (
+  format = 'CSV',
+  uris = ['gs://gcplearning/emp.csv'],
+  skip_leading_rows = 1
+);
+
+muliple files using whild card (*)
+===================================
+CREATE OR REPLACE EXTERNAL TABLE `emp_dataset.external_emp2`
+OPTIONS (
+  format = 'CSV',
+  uris = ['gs://gcplearning/emp*.csv'],
+  skip_leading_rows = 1
+);
+
+select * from `emp_dataset.external_emp2`;
