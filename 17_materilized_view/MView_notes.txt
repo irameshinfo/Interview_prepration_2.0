@@ -1,0 +1,53 @@
+Materialized View in Google BigQuery
+========================================
+A Materialized View is a precomputed and stored query result that BigQuery automatically refreshes.
+
+It improves query performance and reduces processing cost.
+
+CREATE MATERIALIZED VIEW emp_dataset.mv_sales_summary
+AS
+SELECT
+  region,
+  SUM(sales_amount) AS total_sales
+FROM emp_dataset.sales
+GROUP BY region;
+
+Auto Refresh
+===============
+BigQuery automatically refreshes materialized views when base table changes.
+
+Important Restrictions
+
+Materialized views support limited SQL features.
+=============================================
+
+Supported
+-------------
+Aggregations
+GROUP BY
+SUM
+COUNT
+MIN/MAX
+
+Not Supported
+--------------
+Complex joins
+UNION
+Window functions
+Non-deterministic functions
+
+Practical Interview Use Cases
+================
+Dashboard reporting
+Daily aggregation
+KPI reporting
+Frequently used queries
+Cost optimization
+
+Important Real-Time Point
+===========================
+Materialized views can significantly reduce:
+
+total_bytes_processed
+slot utilization
+query latency
