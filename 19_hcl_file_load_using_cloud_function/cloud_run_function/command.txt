@@ -1,0 +1,28 @@
+
+
+gcloud functions deploy gcs-to-bq-load \
+--gen2 \
+--runtime python311 \
+--region us-central1 \
+--source . \
+--entry-point load_csv_to_bq \
+--trigger-bucket gcplearning
+
+gcloud projects describe rameshgcplearning
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+--role="roles/eventarc.eventReceiver"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+--role="roles/storage.objectViewer"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+--role="roles/bigquery.dataEditor"
+
+gcloud projects add-iam-policy-binding rameshgcplearning \
+--member="serviceAccount:796345690715-compute@developer.gserviceaccount.com" \
+--role="roles/bigquery.jobUser"
+
