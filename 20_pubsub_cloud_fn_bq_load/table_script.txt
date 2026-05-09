@@ -1,0 +1,8 @@
+CREATE TABLE `rameshgcplearning.staging.customers_stream`
+(
+    customer_id STRING,
+    customer_name STRING,
+    email STRING,
+    mobile_no STRING,
+    load_time TIMESTAMP
+);

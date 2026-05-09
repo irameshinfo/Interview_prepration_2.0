@@ -1,0 +1,18 @@
+gcloud pubsub topics create customer-topic
+
+
+gcloud functions deploy pubsub_to_bigquery \
+--runtime python311 \
+--trigger-topic customer-topic \
+--entry-point pubsub_to_bigquery \
+--region us-central1 \
+--source .
+
+
+gcloud pubsub topics publish customer-topic \
+--message='{
+  "customer_id":"102",
+  "customer_name":"Ranjan",
+  "email":"ranjan@gmail.com",
+  "mobile_no":"9876543210"
+}'
