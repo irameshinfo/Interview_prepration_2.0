@@ -1,0 +1,11 @@
+CREATE TABLE `rameshgcplearning.audit.etl_audit`
+(
+    table_name STRING,
+    source_file STRING,
+    load_start_time TIMESTAMP,
+    load_end_time TIMESTAMP,
+    rows_loaded INT64,
+    load_status STRING,
+    error_message STRING
+)
+PARTITION BY DATE(load_start_time)

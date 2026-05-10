@@ -1,0 +1,108 @@
+-- =========================================================
+-- CUSTOMERS
+-- =========================================================
+
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.customers`
+(
+    customer_id STRING,
+    customer_name STRING,
+    email STRING,
+    phone STRING,
+    account_id STRING,
+    gender STRING,
+    dob DATE,
+    address STRING,
+    kyc_status STRING,
+    registration_date DATE,
+    transaction_id STRING,
+    load_date TIMESTAMP
+)
+PARTITION BY DATE(load_date)
+CLUSTER BY customer_id;
+
+
+-- =========================================================
+-- ACCOUNTS
+-- =========================================================
+
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.accounts`
+(
+    account_id STRING,
+    account_name STRING,
+    email STRING,
+    phone_number STRING,
+    address STRING,
+    created_date DATE,
+    load_date TIMESTAMP
+)
+PARTITION BY DATE(load_date)
+CLUSTER BY account_id;
+
+
+-- =========================================================
+-- BRANCHES
+-- =========================================================
+
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.branches`
+(
+    branch_id STRING,
+    branch_name STRING,
+    location STRING,
+    manager_name STRING,
+    opened_date DATE,
+    region STRING,
+    branch_type STRING,
+    contact_number STRING,
+    load_date TIMESTAMP
+)
+PARTITION BY DATE(load_date)
+CLUSTER BY branch_id;
+
+
+-- =========================================================
+-- PRODUCTS
+-- =========================================================
+
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.products`
+(
+    product_id STRING,
+    product_name STRING,
+    product_type STRING,
+    price FLOAT64,
+    launch_date DATE,
+    is_active BOOL,
+    category STRING,
+    vendor_name STRING,
+    load_date TIMESTAMP
+)
+PARTITION BY DATE(load_date)
+CLUSTER BY product_id;
+
+
+-- =========================================================
+-- TRANSACTIONS
+-- =========================================================
+
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.transactions`
+(
+    transaction_id STRING,
+    account_id STRING,
+    product_id STRING,
+    branch_id STRING,
+    transaction_date DATE,
+    transaction_timestamp TIMESTAMP,
+    amount FLOAT64,
+    payment_method STRING,
+    status STRING,
+    currency STRING,
+    remarks STRING,
+    is_refund BOOL,
+    load_date TIMESTAMP
+)
+PARTITION BY DATE(load_date)
+CLUSTER BY transaction_id;

@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS
+`rameshgcplearning.curated.audit_table_load_status`
+(
+    table_name STRING,
+    valid_record_count INT64,
+    invalid_record_count INT64,
+    load_timestamp TIMESTAMP
+)
+PARTITION BY DATE(load_timestamp)
+CLUSTER BY table_name;
