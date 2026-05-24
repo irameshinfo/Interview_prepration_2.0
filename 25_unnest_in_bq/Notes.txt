@@ -1,0 +1,23 @@
+Unnest usage
+=============
+if the table has records as like below,
+
+id,name,marks
+1001,ramesh,[30,40,60]
+
+want to display the records as like below then,
+
+id,name,marks
+1001,ramesh,30
+1001,ramesh,40
+1001,ramesh,60
+
+===================
+
+create table curated.stud_mark(id int64,sub string,mark array<INT64>);
+
+insert into curated.stud_mark values (1001,'HSC',[60,50,70,50]);
+
+select id,sub,marks
+from `curated.stud_mark`,
+unnest(mark) as marks
